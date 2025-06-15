@@ -1,6 +1,6 @@
 from datetime import datetime, date
 import random
-db_file = open("db.txt", "r+")
+import hashlib
 data = {}
 def file_to_dict(file_path, separator = ':'):
 	data_dict = {}
@@ -21,6 +21,9 @@ def file_to_dict(file_path, separator = ':'):
 		return {}
 
 	return data_dict
+
+def hashpin(pin):
+	return hashlib.sha256(pin.encode()).hexdigest()
 
 def create_account():
 	print ('Welcome, we are happy to have you join us')
@@ -46,6 +49,7 @@ def create_account():
 		print('pin cannot be lesser than 4')
 		exit()
 
+	hashedpin = hashpin(pin)
 		
 
 	check = False
@@ -65,7 +69,7 @@ def create_account():
 	deets = [('first_name', first_name),
 			  ('last_name', last_name),
 			  ('DOB', DOB_str),
-			  ('pin', pin),
+			  ('pin', hashedpin),
 			  ('bal', 0)]
 
 	data[acc_num] = dict(deets)
@@ -74,8 +78,8 @@ def create_account():
 	acc_create.close()
 	print(f'Welcome {first_name}, your account number is {acc_num}')
 
-def login():
-	#feeling sleepy, would be back tomorrow
+#def login()
+
 def interface():
 	print("Welcome to Wemma Bank")
 	print(" To create account enter 1\n To login enter 2 ")
