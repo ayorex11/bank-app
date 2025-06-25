@@ -100,7 +100,7 @@ def create_account(data, data2):
 		print('invalid input')
 		return
 	if option == 1:
-		login(data)
+		login(data, data2)
 	else:
 		print ('logging out...')
 		time.sleep(3)
@@ -155,7 +155,55 @@ def login(data, data2):
             		data2[acc_num] = deets
             		save_transaction_data(data2)
             		print(f'You have successfully deposited #{amount} into your account')
-            
+
+            	elif option == 3:
+            		dest_account = input('Please enter destination account of user \n >')
+            		dest_user = data.get(dest_account)
+            		if not dest_user:
+            			print('Destination account not found')
+            			return
+            		amount = int(input('Please enter amount you wish to send \n >'))
+            		if amount > data[acc_num]['bal']:
+            			print('amount greater than current balance')
+            			return
+
+            		receiver = dest_user['first_name'] + " " + dest_user['last_name']
+            		print(f'You are about to send {amount} to {receiver}')
+            		trans_pin = input('Please enter your pin to confirm the transaction \n >')
+            		if hashpin(trans_pin) == user['pin']:
+            			data[acc_num]['bal'] -= amount
+            			data[dest_account]['bal'] += amount
+            			save_data(data)
+
+            			time = str(datetime.now())
+            			
+            			deets_sender = {
+            				'details' : 'You have successfully made a transfer',
+            				'amount' : amount,
+            				'Time' : time,
+            				'receiver' : receiver,
+            				'account_number' : dest_account
+            			}
+
+            			data2[acc_num] = deets_sender
+
+            			sender = user['first_name'] + " " + user['last_name']
+
+
+            			deets_receiver = {
+            				'details' : 'You have successfully received some money',
+            				'amount' : amount,
+            				'Time' : time,
+            				'sender' : sender
+            			}
+
+            			data2[dest_account] = deets_receiver
+            			save_transaction_data(data2)
+            			print('transfer successful')
+
+            		else:
+            			print('Incorrect Pin')
+            			return
             
             return
         else:
