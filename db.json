@@ -4,7 +4,7 @@
         "last_name": "Ade",
         "DOB": "2004/01/01",
         "pin": "483029d526219f816e8e8f6a9de07b422633dba180ffc26faac22862a017519f",
-        "bal": 133000
+        "bal": 132000
     },
     "5703876952": {
         "first_name": "Sise",
@@ -18,6 +18,6 @@
         "last_name": "Oguns",
         "DOB": "1999/01/01",
         "pin": "ce8457d59078a699acb70416f88155a96a906b7b7aad43708402e3a3bcc8a4b4",
-        "bal": 2000
+        "bal": 3000
     }
 }

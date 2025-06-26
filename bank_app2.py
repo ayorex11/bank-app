@@ -124,10 +124,11 @@ def login(data, data2):
             print (f'welcome once again {user['first_name']}, your account balance is #{user['bal']}')
             while True:
             	print("""\nTo check account balance, enter 1
-            	To deposit money, enter 2
-            	To transfer money, enter 3 
-            	To withdraw money, enter 4
-            	To logout, enter 5""")
+            		To deposit money, enter 2
+            		To transfer money, enter 3 
+            		To withdraw money, enter 4
+            		To get transaction history, enter 5
+            		To logout, enter 0""")
             	try:
             		option = int(input('Enter an option \n >'))
             	except ValueError:
@@ -137,6 +138,9 @@ def login(data, data2):
             		pin = input('Please enter your pin to confirm \n >')
             		if hashpin(pin) == user['pin']:
             			print (f'Your account balance is #{user['bal']}')
+
+            		else:
+            			print('Incorrect Pin')
 
             	elif option == 2:
             		try:
@@ -201,9 +205,35 @@ def login(data, data2):
             			save_transaction_data(data2)
             			print('transfer successful')
 
+
+            		else:
+            			print('Invalid PIN')
+
+           		elif option == 4:
+           			try:
+           				amount = int(input('Enter amount you wish to withdraw \n >'))
+           			except ValueError:
+           				print('Invalid Input')
+           			if amount > data[acc_num]['bal']:
+           				print('amount exceeds current balance')
+           				return
+
+           			pin = input('Please enter your pin to confirm \n >')
+            		if hashpin(pin) == user['pin']:
+            			data[acc_num]['bal'] -= amount
+            			save_data(data)
+            			time = str(datetime.now())
+            			deets = {'details': 'Your withdrawal was successful',
+            					'amount': amount,
+            					'Time': time}
+
+            			data2[acc_num] = deets
+            			save_transaction_data(data2)
+            			print (f'you have successfully withdrawn # {amount}')
+
             		else:
             			print('Incorrect Pin')
-            			return
+            			
             
             return
         else:
@@ -221,7 +251,11 @@ def interface():
 	data2 = load_transaction_data()
 	print("Welcome to Wemma Bank")
 	print(" To create account enter 1\n To login enter 2 ")
-	option = int(input("Enter option >"))
+	try:
+		option = int(input("Enter option >"))
+	except ValueError:
+		print('Invalid Input')
+		return
 
 	if option == 1:
 		create_account(data, data2)
