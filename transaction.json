@@ -1,48 +1,24 @@
 {
-    "5952787452": {
-        "details": "You money has been successfully deposited",
-        "amount": 15000,
-        "Time": "2025-06-24 15:07:05.197849"
-    }
-}{
-    "5952787452": {
-        "details": "You money has been successfully deposited",
-        "amount": 100000,
-        "Time": "2025-06-24 15:08:11.081401"
-    }{
-    "5952787452": {
-        "details": "You have successfully made a transfer",
-        "amount": 1000,
-        "Time": "2025-06-25 12:14:34.490804",
-        "receiver": "Fola Oguns",
-        "account_number": "5795150246"
-    }
-}{
-    "5952787452": {
-        "details": "You have successfully made a transfer",
-        "amount": 1000,
-        "Time": "2025-06-25 12:14:34.490804",
-        "receiver": "Fola Oguns",
-        "account_number": "5795150246"
-    },
-    "5795150246": {
-        "details": "You have successfully received some money",
-        "amount": 1000,
-        "Time": "2025-06-25 12:14:34.490804",
-        "sender": "Ayo Ade"
-    }
-}{
-    "5952787452": {
-        "details": "You have successfully made a transfer",
-        "amount": 1000,
-        "Time": "2025-06-25 22:53:02.459184",
-        "receiver": "Fola Oguns",
-        "account_number": "5795150246"
-    },
-    "5795150246": {
-        "details": "You have successfully received some money",
-        "amount": 1000,
-        "Time": "2025-06-25 22:53:02.459184",
-        "sender": "Ayo Ade"
-    }
+    "5952787452": [
+        {
+            "details": "Your money has been successfully deposited",
+            "amount": 1000,
+            "Time": "2025-07-08 15:14:33.620773"
+        },
+        {
+            "details": "You have successfully made a transfer",
+            "amount": 1000,
+            "Time": "2025-07-08 15:15:32.885957",
+            "receiver": "Sise Ade",
+            "account_number": "5703876952"
+        }
+    ],
+    "5703876952": [
+        {
+            "details": "You have successfully received some money",
+            "amount": 1000,
+            "Time": "2025-07-08 15:15:32.885957",
+            "sender": "Ayo Ade"
+        }
+    ]
 }
